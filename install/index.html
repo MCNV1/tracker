@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#76B900">
+<title>Install NVIDIA Tracker</title>
+<meta property="og:title" content="Install NVIDIA Tracker">
+<meta property="og:description" content="Tap to install on iPhone or Android. Step-by-step guide.">
+<meta property="og:image" content="https://mcnv1.github.io/nvaudit-apk/install/og.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#0a0a0a;color:#fff;min-height:100vh;line-height:1.5}
+body{padding:20px;max-width:520px;margin:0 auto}
+.hero{text-align:center;padding:24px 0 32px}
+.logo{width:96px;height:96px;border-radius:22px;background:#76B900;display:inline-flex;align-items:center;justify-content:center;flex-direction:column;font-family:Arial Black,Arial,sans-serif;color:#000;box-shadow:0 8px 24px rgba(118,185,0,.35)}
+.logo .n{font-size:62px;font-weight:900;line-height:1;margin-top:6px}
+.logo .t{font-size:11px;font-weight:700;letter-spacing:1px;margin-top:2px}
+h1{font-size:24px;margin-top:18px;font-weight:700}
+.sub{color:#aaa;font-size:14px;margin-top:6px}
+.platform-tabs{display:flex;gap:8px;margin:16px 0;background:#1a1a1a;padding:6px;border-radius:14px}
+.tab{flex:1;padding:12px;text-align:center;border-radius:10px;font-weight:600;font-size:14px;cursor:pointer;transition:.15s;color:#888;border:0;background:transparent;font-family:inherit}
+.tab.active{background:#76B900;color:#000}
+.warn{background:#3a2a00;border:1px solid #ffa500;border-radius:14px;padding:16px;margin:16px 0;display:none}
+.warn.show{display:block}
+.warn h3{color:#ffa500;font-size:15px;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.warn p{font-size:13px;color:#ddd}
+.warn .copybtn{display:inline-block;margin-top:10px;background:#ffa500;color:#000;padding:10px 16px;border-radius:8px;font-weight:700;border:0;font-size:14px;cursor:pointer;font-family:inherit}
+
+/* v3.1: PC-to-iPhone transfer callout (for users with no VPN on phone) */
+.ios-no-vpn{
+  background:linear-gradient(135deg, rgba(95,169,255,.10), rgba(95,169,255,.04));
+  border:1px solid rgba(95,169,255,.45); border-radius:14px;
+  padding:18px 18px 16px; margin:0 0 12px;
+}
+.ios-no-vpn-h{
+  color:#5fa9ff; font-size:15px; font-weight:700;
+  display:flex; align-items:center; gap:8px; margin-bottom:8px;
+}
+.ios-pc-step{font-size:14px; color:#fff; margin-top:14px; margin-bottom:4px;}
+.ios-transfer{margin:6px 0 8px 22px; padding:0; color:#cfe5a8;}
+.ios-transfer li{font-size:13px; margin:6px 0; line-height:1.45; color:#cfe5a8;}
+.ios-transfer li b{color:#fff;}
+.steps{display:none}
+.steps.active{display:block}
+.step{background:#1a1a1a;border-radius:14px;padding:18px;margin-bottom:12px;display:flex;gap:14px;align-items:flex-start}
+.step-num{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:#76B900;color:#000;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:15px}
+.step-body{flex:1}
+.step-body h3{font-size:15px;margin-bottom:4px}
+.step-body p{font-size:14px;color:#bbb}
+.step-body .icon-row{display:inline-flex;align-items:center;gap:6px;margin-top:4px;font-size:13px;color:#76B900;font-weight:600}
+.cta{display:block;background:#76B900;color:#000;text-align:center;padding:16px;border-radius:14px;font-weight:700;font-size:16px;text-decoration:none;margin:20px 0}
+.cta:active{opacity:.85}
+.qr-section{text-align:center;background:#1a1a1a;padding:24px;border-radius:14px;margin-top:24px;display:none}
+.qr-section.show{display:block}
+.qr-section h3{margin-bottom:12px;font-size:15px}
+.qr-section img{background:#fff;padding:10px;border-radius:8px;width:200px;height:200px}
+.qr-section p{font-size:13px;color:#aaa;margin-top:10px;word-break:break-all}
+.icon-share,.icon-menu,.icon-add{display:inline-block;width:18px;height:18px;vertical-align:middle}
+footer{text-align:center;color:#555;font-size:11px;margin-top:32px;padding-bottom:24px}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="logo"><div class="n">N</div><div class="t">AUDIT</div></div>
+  <h1>NVIDIA Tracker</h1>
+  <p class="sub">v3.0 — Install on your phone</p>
+</div>
+
+<div class="platform-tabs" id="tabs">
+  <button class="tab" data-tab="ios">📱 iPhone</button>
+  <button class="tab" data-tab="android">🤖 Android</button>
+  <button class="tab" data-tab="desktop">💻 Desktop</button>
+</div>
+
+<div class="warn" id="warn-inapp">
+  <h3>⚠️ Open in your browser first</h3>
+  <p id="warn-text">This page is open inside an in-app browser (WhatsApp / Teams / Slack). The "Add to Home Screen" feature only works in <b>Safari</b> on iPhone or <b>Chrome</b> on Android.</p>
+  <p style="margin-top:10px"><b>How:</b> Tap the <b>⋯</b> or <b>↗</b> menu at the top/bottom of this screen and pick <b>"Open in Safari"</b> or <b>"Open in browser"</b>.</p>
+  <button class="copybtn" onclick="copyLink()">📋 Copy install link</button>
+</div>
+
+<!-- iOS steps -->
+<div class="steps" id="steps-ios">
+
+  <!-- v3.1: PRIMARY path for iPhone users without corp VPN on their phone.
+       The portal is on NVIDIA-internal pages, so iPhone Safari can't reach
+       /tracker/ directly. Transfer the self-contained HTML from PC instead. -->
+  <div class="ios-no-vpn">
+    <div class="ios-no-vpn-h">📵 Your iPhone has no NVIDIA VPN?</div>
+    <p style="margin:0 0 12px;color:#cfe5a8">The Tracker lives on NVIDIA's internal network. If your iPhone can't reach this page directly, do the install <b>from your PC</b> — it's a single self-contained file you transfer to the phone.</p>
+
+    <div class="ios-pc-step"><b>1.</b> On your work PC (where VPN is on), tap below to download the single-file build:</div>
+    <a class="cta" href="/NVIDIA_Tracker_v3.0.html" download="NVIDIA_Tracker_v3.0.html" style="background:#5fa9ff;color:#000;margin:6px 0 14px">⬇ Save NVIDIA_Tracker_v3.0.html (PC)</a>
+
+    <div class="ios-pc-step"><b>2.</b> Send that file from your PC to your iPhone. Pick any one:</div>
+    <ul class="ios-transfer">
+      <li><b>OneDrive</b> (most reliable) — save the file to your NVIDIA OneDrive on PC, open the OneDrive app on iPhone signed in with your NVIDIA account, tap the file.</li>
+      <li><b>Email yourself</b> — send the .html as an attachment to your own NVIDIA email, open the attachment on iPhone Mail → tap → "Open in Safari".</li>
+      <li><b>Teams chat to yourself</b> — drag the file into a self-chat on PC Teams, open it on iPhone Teams, tap → "Save to Files" → open from Files in Safari.</li>
+      <li><b>AirDrop</b> (Mac only) — right-click → Share → AirDrop → your iPhone.</li>
+    </ul>
+
+    <div class="ios-pc-step"><b>3.</b> On iPhone, tap the transferred file — it opens in Safari. Then continue with the steps below to pin it to your home screen.</div>
+  </div>
+
+  <div class="ios-already" style="margin:18px 0 8px;text-align:center;color:#999;font-size:13px">— OR, if you opened this page on your iPhone directly (VPN active) —</div>
+  <a class="cta" href="../index.html">▶ Open the app first</a>
+
+  <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Make sure the app is open in Safari</h3><p>If you arrived via Mail / OneDrive / Teams, tap <b>Share → "Open in Safari"</b> first. Apple only allows Add-to-Home-Screen from Safari (not Chrome, WhatsApp, etc.).</p></div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Tap the Share button</h3><p>The square icon with an arrow pointing up — at the bottom of Safari (or top right on iPad).</p><div class="icon-row">↗ Share icon</div></div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Scroll down → "Add to Home Screen"</h3><p>You may need to scroll past the AirDrop / Messages row to find it.</p></div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Tap "Add" (top right)</h3><p>The "NV Tracker" icon appears on your home screen — opens fullscreen, just like a native app. Works offline after first open.</p></div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body"><h3>Done!</h3><p>Tap the icon to launch. PPTX export uses the iOS share sheet — pick <b>Save to Files</b> to keep on iPhone, or share to Mail / Teams.</p></div></div>
+</div>
+
+<!-- Android steps -->
+<div class="steps" id="steps-android">
+  <!-- Primary path: native APK from GitLab CI artifact (always latest master build) -->
+  <a class="cta" href="/nvaudit-3.0-debug.apk" download="nvaudit-3.0-debug.apk">⬇ Download APK (v3.0)</a>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Tap "Download APK"</h3><p>Above. The file is <code>nvaudit-3.0-debug.apk</code> — hosted directly on the portal.</p></div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Allow install from this source</h3><p>First time only — Android will ask: <b>Settings → Allow from this source</b>. Normal for in-house apps not on the Play Store.</p></div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Tap the downloaded APK</h3><p>From your browser's download notification, or open <b>Files → Downloads</b> and tap the .apk. Hit <b>Install</b>.</p></div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><h3>You're done</h3><p>The "NV Audit" icon appears in your launcher. Native app with system share sheet, camera, and offline storage.</p></div></div>
+
+  <!-- Fallback: PWA via Chrome -->
+  <div class="step" style="border:1px solid #555;margin-top:24px"><div class="step-num">+</div><div class="step-body"><h3>Or install as PWA (no APK download)</h3><p>Open the <a href="../" style="color:#76B900">web app</a> in Chrome → tap ⋮ → "Install app". Lighter install, no permissions prompt, but share sheet is web-style instead of native.</p></div></div>
+</div>
+
+<!-- Desktop -->
+<div class="steps" id="steps-desktop">
+  <a class="cta" href="../index.html">▶ Open the app in browser</a>
+  <p style="text-align:center;color:#aaa;margin:16px 0;font-size:14px">The app runs fine in any modern desktop browser (Chrome, Edge, Firefox, Safari). To install it on a phone, scan the QR below from your phone camera:</p>
+  <div class="qr-section show">
+    <h3>Scan with your phone camera</h3>
+    <img id="qr-img" alt="QR code">
+    <p id="qr-url"></p>
+  </div>
+</div>
+
+<footer>
+  NVIDIA Tracker · Internal tool · MCNV1/nvaudit-apk
+</footer>
+
+<script>
+(function(){
+  var ua = navigator.userAgent || '';
+  var isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+  var isAndroid = /Android/i.test(ua);
+  var isInApp = /(FBAN|FBAV|Instagram|Twitter|Line|MicroMessenger|WhatsApp|Slack|Teams|Outlook|Snapchat|Pinterest|TikTok)/i.test(ua);
+
+  // Default tab from URL hash (?#ios / ?#android / ?#desktop), else UA-detected
+  var hashTab = (location.hash || '').replace('#','').toLowerCase();
+  var validTabs = {ios:1, android:1, desktop:1};
+  var defaultTab = validTabs[hashTab]
+    ? hashTab
+    : (isIOS ? 'ios' : (isAndroid ? 'android' : 'desktop'));
+  setTab(defaultTab);
+
+  // In-app browser warning
+  if (isInApp || (isIOS && /CriOS|FxiOS|EdgiOS/.test(ua))) {
+    document.getElementById('warn-inapp').classList.add('show');
+  }
+
+  // Tab clicks
+  var tabs = document.querySelectorAll('.tab');
+  for (var i=0; i<tabs.length; i++) {
+    tabs[i].addEventListener('click', function(e){ setTab(e.currentTarget.getAttribute('data-tab')); });
+  }
+
+  // QR code (uses public api.qrserver.com — only loaded for desktop tab)
+  var pageUrl = window.location.origin + window.location.pathname;
+  document.getElementById('qr-url').textContent = pageUrl;
+  document.getElementById('qr-img').src = 'https://api.qrserver.com/v1/create-qr-code/?size=400x400&margin=10&data=' + encodeURIComponent(pageUrl);
+
+  function setTab(name){
+    var allTabs = document.querySelectorAll('.tab');
+    var allSteps = document.querySelectorAll('.steps');
+    for (var i=0; i<allTabs.length; i++) allTabs[i].classList.remove('active');
+    for (var j=0; j<allSteps.length; j++) allSteps[j].classList.remove('active');
+    document.querySelector('.tab[data-tab="'+name+'"]').classList.add('active');
+    document.getElementById('steps-'+name).classList.add('active');
+  }
+
+  window.copyLink = function(){
+    var link = window.location.origin + window.location.pathname;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(link).then(function(){
+        alert('Link copied! Paste into Safari (iPhone) or Chrome (Android).');
+      }).catch(function(){ prompt('Copy this link:', link); });
+    } else {
+      prompt('Copy this link:', link);
+    }
+  };
+})();
+</script>
+</body>
+</html>
